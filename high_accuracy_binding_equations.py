@@ -1,29 +1,28 @@
+"""
+Functions to calculate readout of competition experiments
+
+Used in the preparation of the manuscript "Revisiting labelled ligand affinity
+in competition experiments" by Shave et.al.
+"""
+
+
 from mpmath import mpf, sqrt, power, mp, fabs
-
-mp.dps = 500
-
-
-
+mp.dps = 500 # Set mpmath to use high accuracy
 
 def calc_amount_p(fraction_bound, l, kdax):
-    # fraction_bound=mpf(fraction_bound)
-    # x=mpf(x)
-    # kdax=mpf(kdax)
-    return ((-(kdax*fraction_bound) - l*fraction_bound + l*fraction_bound*fraction_bound)/(-1 + fraction_bound)).real
+    """ Calculate amount of protein for a given fraction bound and KD"""
+    return (-(kdax*fraction_bound) - l*fraction_bound + l*fraction_bound*fraction_bound)/(-1 + fraction_bound)
  
-# def calc_inhibitor_conc(p, l, i, kdpl, kdpi, fraction_l_bound):
-#     # p=mpf(p)
-#     # l=mpf(l)
-#     # kdpl=mpf(kdpl)
-#     # kdpi=mpf(kdpi)
-#     # fraction_l_bound=mpf(fraction_l_bound)
-#     return (((-kdpi + kdpi*fraction_l_bound - kdpl*fraction_l_bound)*(i - i*fraction_l_bound - kdpl*fraction_l_bound - l*fraction_l_bound + l*fraction_l_bound*fraction_l_bound))/(kdpl*(-fraction_l_bound + fraction_l_bound*fraction_l_bound))).real
- 
-
-
 # 1:1:1 competition - see https://stevenshave.github.io/pybindingcurve/simulate_competition.html
 # Readout is PL
 def competition_pl(p, l, i, kdpl, kdpi):
+    """Calculate PL concentration in competition experiment
+
+    Calculate the protein-ligand complex formed in a competition experiment.
+    See https://stevenshave.github.io/pybindingcurve/simulate_competition.html
+    The correct solution is chosen based on which KD is larger etc.  A
+    correction is applied if the KDs are equal.
+    """
     p = mpf(p)
     l = mpf(l)
     i = mpf(i)
@@ -33,7 +32,7 @@ def competition_pl(p, l, i, kdpl, kdpi):
         print(kdpl, kdpi)
         kdpi += 1e-6
     if kdpl < kdpi:
-        return (
+        return float((
             -(
                 p * kdpi
                 - p * kdpl
@@ -395,9 +394,9 @@ def competition_pl(p, l, i, kdpl, kdpi):
                 0.3333333333333333,
             )
             / (3.0 * power(2, 0.3333333333333333) * (-kdpi + kdpl))
-        ).real
+        ).real)
     else:
-        return (
+        return float((
             -(
                 p * kdpi
                 - p * kdpl
@@ -763,4 +762,4 @@ def competition_pl(p, l, i, kdpl, kdpi):
                 )
             )
             / (6.0 * power(2, 0.3333333333333333) * (-kdpi + kdpl))
-        ).real
+        ).real)
