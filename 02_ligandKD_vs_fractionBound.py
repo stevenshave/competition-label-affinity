@@ -15,7 +15,7 @@ from high_accuracy_binding_equations import *
 # concentrations bellow.
 
 # Parameters dictating range of simulation
-XAXIS_BEGINNING = 3  # pKD of 3 is µM
+XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
 NUM_POINTS_ON_XAXIS = 2000 # Publication used 2000 pts along X
 TARGET_FRACTION_L_BOUND = 0.7
