@@ -21,16 +21,18 @@ NUM_POINTS_ON_XAXIS = 2000 # Publication used 2000 pts along X
 TARGET_FRACTION_L_BOUND = 0.7
 
 x_axis = np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_POINTS_ON_XAXIS)
-ligand_kd_range = 10**(-x_axis)*1e6  # We are working in µM, which is 1e-6.
-inhibitor_kds = np.array([0.001, 0.01, 0.1000001, 1, 10, 100])
+ligand_kd_range = 10**(-x_axis)  # We are working in µM, which is 1e-6.
+#inhibitor_kds = np.array([0.001, 0.01, 0.1000001, 1, 10, 100])
+inhibitor_kds = np.array([1e-9, 10e-9, 100e-9, 1e-6, 10e-6, 100e-6])
+#inhibitor_kds = np.array([1e-9])
 protein_concs = np.array(calc_amount_p(
-    TARGET_FRACTION_L_BOUND, 0.01, ligand_kd_range))
+    TARGET_FRACTION_L_BOUND, 10e-9, ligand_kd_range))
 y = np.full((inhibitor_kds.shape[0], x_axis.shape[0]), np.nan)
 
 for it_inhibitor_kds, inhibitor_kd in enumerate(inhibitor_kds):
     for it_ligand_kd_range, ligand_kd in enumerate(ligand_kd_range):
-        lig_conc = 0.01
-        i_conc = 10
+        lig_conc = 10e-9
+        i_conc = 10e-6
         p = protein_concs[it_ligand_kd_range]
         y[it_inhibitor_kds][it_ligand_kd_range] = competition_pl(
             **{'p': p, 'l': lig_conc, 'i': i_conc, 'kdpl': ligand_kd, 'kdpi': inhibitor_kd})/lig_conc
@@ -65,6 +67,7 @@ for i in reversed(range(inhibitor_kds.shape[0])):
 ax.set_xlabel(r"Ligand pK$_\mathrm{D}$")
 ax.set_ylabel("Fraction ligand bound")
 ax.legend()
+ax.grid()
 ax.title.set_text(r"Protein-ligand signal over a range of ligand K$_\mathrm{D}$s, [L]=10 nM, [I]=10 " +
                   r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
 ax.set_xlim(3, 12)
