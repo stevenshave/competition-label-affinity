@@ -7,12 +7,32 @@ in competition experiments" by Shave et.al.
 
 
 from mpmath import mpf, sqrt, power, mp, fabs
-mp.dps = 500 # Set mpmath to use high accuracy
+mp.dps = 500  # Set mpmath to use high accuracy
+
 
 def calc_amount_p(fraction_bound, l, kdax):
     """ Calculate amount of protein for a given fraction bound and KD"""
     return (-(kdax*fraction_bound) - l*fraction_bound + l*fraction_bound*fraction_bound)/(-1 + fraction_bound)
- 
+
+
+def calc_kdpi_for_fractionl_bound(p, l, i, kdpl, targetflb):
+    p=mpf(p)
+    l=mpf(l)
+    i=mpf(i)
+    kdpl=mpf(kdpl)
+    kdpi=mpf(kdpi)
+    targetflb=mpf(targetflb)
+    return float((kdpl*targetflb*(i - p - i*targetflb + kdpl*targetflb + l*targetflb + p*targetflb - l*power(targetflb, 2)))/((-1 + targetflb)*(-p + kdpl*targetflb + l*targetflb + p*targetflb - l*power(targetflb, 2))).real)
+
+def calc_i_for_fractionl_bound(p,l,kdpl,kdpi,targetflb):
+    p=mpf(p)
+    l=mpf(l)
+    kdpl=mpf(kdpl)
+    kdpi=mpf(kdpi)
+    targetflb=mpf(targetflb)
+    return ((-kdpi + kdpi*targetflb - kdpl*targetflb)*(p - kdpl*targetflb - l*targetflb - p*targetflb + l*power(targetflb,2)))/(kdpl*(-targetflb + power(targetflb,2)))
+
+
 # 1:1:1 competition - see https://stevenshave.github.io/pybindingcurve/simulate_competition.html
 # Readout is PL
 def competition_pl(p, l, i, kdpl, kdpi):
@@ -144,7 +164,8 @@ def competition_pl(p, l, i, kdpl, kdpi):
                             - 6 * power(p, 3) * kdpi * power(kdpl, 2)
                             + 12 * power(p, 2) * i * kdpi * power(kdpl, 2)
                             - 6 * p * power(i, 2) * kdpi * power(kdpl, 2)
-                            + 18 * power(p, 2) * power(kdpi, 2) * power(kdpl, 2)
+                            + 18 * power(p, 2) * power(kdpi, 2) *
+                            power(kdpl, 2)
                             - 12 * p * i * power(kdpi, 2) * power(kdpl, 2)
                             - 6 * p * power(kdpi, 3) * power(kdpl, 2)
                             + 2 * power(p, 3) * power(kdpl, 3)
@@ -509,7 +530,8 @@ def competition_pl(p, l, i, kdpl, kdpi):
                             - 6 * power(p, 3) * kdpi * power(kdpl, 2)
                             + 12 * power(p, 2) * i * kdpi * power(kdpl, 2)
                             - 6 * p * power(i, 2) * kdpi * power(kdpl, 2)
-                            + 18 * power(p, 2) * power(kdpi, 2) * power(kdpl, 2)
+                            + 18 * power(p, 2) * power(kdpi, 2) *
+                            power(kdpl, 2)
                             - 12 * p * i * power(kdpi, 2) * power(kdpl, 2)
                             - 6 * p * power(kdpi, 3) * power(kdpl, 2)
                             + 2 * power(p, 3) * power(kdpl, 3)
@@ -673,7 +695,8 @@ def competition_pl(p, l, i, kdpl, kdpi):
                             - 6 * power(p, 3) * kdpi * power(kdpl, 2)
                             + 12 * power(p, 2) * i * kdpi * power(kdpl, 2)
                             - 6 * p * power(i, 2) * kdpi * power(kdpl, 2)
-                            + 18 * power(p, 2) * power(kdpi, 2) * power(kdpl, 2)
+                            + 18 * power(p, 2) * power(kdpi, 2) *
+                            power(kdpl, 2)
                             - 12 * p * i * power(kdpi, 2) * power(kdpl, 2)
                             - 6 * p * power(kdpi, 3) * power(kdpl, 2)
                             + 2 * power(p, 3) * power(kdpl, 3)
