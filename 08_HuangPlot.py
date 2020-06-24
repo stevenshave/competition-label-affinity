@@ -18,7 +18,7 @@ from high_accuracy_binding_equations import *
 # Parameters dictating range of simulation
 XAXIS_BEGINNING = 0  # 10**0 ==1 nM
 XAXIS_END = 5  # 10**5 = 100 µM
-NUM_POINTS_ON_XAXIS = 2000  # Publication used 2000 pts along X
+NUM_POINTS_ON_XAXIS = 300  # Publication used 2000 pts along X
 TARGET_FRACTION_L_BOUND = 0.7
 LIGAND_KDs=[10,100,1000,10000]
 LIGAND_CONC=10
