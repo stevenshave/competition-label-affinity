@@ -49,6 +49,7 @@ plot_marker_styles = [
     '^',
     'v',
     'D',
+
 ]
 fig, ax = plt.subplots(figsize=(8, 6))
 ax.set_xticklabels(
@@ -57,11 +58,13 @@ ax.set_xticks(range(XAXIS_BEGINNING, XAXIS_END+1))
 
 for i in reversed(range(y.shape[0])):
     ax.plot(x_axis, y[i], 'k', marker=plot_marker_styles[len(plot_marker_styles)-y.shape[0]:][i], markevery=NUM_POINTS_ON_XAXIS//10, linewidth=1,label=plot_line_labels[i])
-ax.set_xlabel(r"K$_\mathrm{I}$ (KDPI)")
+ax.set_xlabel(r"K$_\mathrm{i}$ (K$_\mathrm{D}$PI)")
 ax.set_ylabel(r"IC$_{50}$ ([I]) (nM) ")
 ax.legend()
 ax.grid()
+ax.set_ylim(1e1,1e6)
 plt.yscale('log')
-ax.title.set_text(r"IC$_{50}$ versus K$_i$, L$_0$ = 10 nM, target fraction ligand bound = "+str(TARGET_FRACTION_L_BOUND)) 
+
+ax.title.set_text(r"IC$_{50}$ versus K$_\mathrm{i}$, L$_0$ = 10 nM, target fraction ligand bound = "+str(TARGET_FRACTION_L_BOUND)) 
 ax.set_xlim(XAXIS_BEGINNING, XAXIS_END)
 plt.show()
