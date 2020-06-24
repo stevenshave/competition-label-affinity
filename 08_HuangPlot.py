@@ -43,6 +43,8 @@ plot_line_labels = [
     r'K$_\mathrm{D}$PL=10 µM',
 ]
 plot_marker_styles = [
+    '<',
+    '>',
     's',
     '^',
     'v',
@@ -54,7 +56,7 @@ ax.set_xticklabels(
 ax.set_xticks(range(XAXIS_BEGINNING, XAXIS_END+1))
 
 for i in reversed(range(y.shape[0])):
-    ax.plot(x_axis, y[i], 'k', marker=plot_marker_styles[i], markevery=NUM_POINTS_ON_XAXIS//10, linewidth=1,label=plot_line_labels[i])
+    ax.plot(x_axis, y[i], 'k', marker=plot_marker_styles[len(plot_marker_styles)-y.shape[0]:][i], markevery=NUM_POINTS_ON_XAXIS//10, linewidth=1,label=plot_line_labels[i])
 ax.set_xlabel(r"K$_\mathrm{I}$ (KDPI)")
 ax.set_ylabel(r"IC$_{50}$ ([I]) (nM) ")
 ax.legend()
