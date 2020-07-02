@@ -48,8 +48,8 @@ def competition_pl(p, l, i, kdpl, kdpi):
     i = mpf(i)
     kdpl = mpf(kdpl)
     kdpi = mpf(kdpi)
-    if fabs(kdpl - kdpi) < 1e-6:
-        kdpi += 1e-6
+    if fabs(kdpl - kdpi) < 1e-12:
+        kdpi += 1e-12
     if kdpl < kdpi:
         return float((
             -(
