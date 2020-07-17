@@ -7,6 +7,9 @@ in competition experiments" by Shave et.al.
 
 import sys
 from matplotlib import pyplot as plt
+plt.rcParams['animation.ffmpeg_path'] = Path("C:\\Users\\steve\\Downloads\\ffmpeg-20200716-d11cc74-win64-static\\bin\\ffmpeg.exe")
+from matplotlib import animation
+
 import numpy as np
 from high_accuracy_binding_equations import *
 
@@ -18,7 +21,7 @@ NUM_POINTS_ON_XAXIS = 2000 # Publication used 2000 pts along X
 TARGET_FRACTION_L_BOUND = 0.7
 
 x_axis = np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_POINTS_ON_XAXIS)
-ligand_kd_range = 10**(-x_axis)  
+ligand_kd_range = 10**(-x_axis)
 #inhibitor_kds = np.array([0.001, 0.01, 0.1000001, 1, 10, 100])
 inhibitor_kds = np.array([1e-9, 10e-9, 100e-9, 1e-6, 10e-6, 100e-6])
 #inhibitor_kds = np.array([1e-9])

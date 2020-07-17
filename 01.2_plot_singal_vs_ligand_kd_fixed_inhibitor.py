@@ -11,9 +11,6 @@ from matplotlib import pyplot as plt
 import numpy as np
 from high_accuracy_binding_equations import *
 
-# We can choose to work in a common unit, typically nM, or uM, as long as all
-# numbers are in the same unit, the result is valid.  We assume uM for all
-# concentrations bellow.
 
 # Parameters dictating range of simulation
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
@@ -23,7 +20,7 @@ LIGAND_CONC=10e-9
 INHIBITOR_CONC=10e-6
 
 x_axis = np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_POINTS_ON_XAXIS)
-ligand_kd_range = 10**(-x_axis)  # We are working in µM, which is 1e-6.
+ligand_kd_range = 10**(-x_axis)
 protein_conc = 1e-6
 y = np.full((x_axis.shape[0]), np.nan)
 for i in range(ligand_kd_range.shape[0]):
