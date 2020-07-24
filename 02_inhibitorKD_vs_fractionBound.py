@@ -1,7 +1,7 @@
 """
-Produce plot of competition experiment sensitivity, ligand KD x-axis
+Produce plot of competition experiment sensitivity, inhibitor KD x-axis
 
-Generates a plot used in the manuscript "Revisiting labelled ligand affinity
+Generates a plot supporting the manuscript "Revisiting labelled ligand affinity
 in competition experiments" by Shave et.al.
 """
 
@@ -14,24 +14,23 @@ from high_accuracy_binding_equations import *
 # Parameters dictating range of simulation
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
-NUM_POINTS_ON_XAXIS = 2000 # Publication used 2000 pts along X
+NUM_POINTS_ON_XAXIS = 50 # Publication used 2000 pts along X
 TARGET_FRACTION_L_BOUND = 0.7
 
 x_axis = np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_POINTS_ON_XAXIS)
-ligand_kd_range = 10**(-x_axis)  
-inhibitor_kds = np.array([1e-9, 10e-9, 100e-9, 1e-6, 10e-6, 100e-6])
+inhibitor_kd_range = 10**(-x_axis)  
+ligand_kds = np.array([1e-12,10e-12,100e-12,1e-9, 10e-9, 100e-9, 1e-6, 10e-6, 100e-6])
 protein_concs = np.array(calc_amount_p(
-    TARGET_FRACTION_L_BOUND, 10e-9, ligand_kd_range))
-y = np.full((inhibitor_kds.shape[0], x_axis.shape[0]), np.nan)
+    TARGET_FRACTION_L_BOUND, 10e-9, ligand_kds))
+y = np.full((ligand_kds.shape[0], x_axis.shape[0]), np.nan)
 
-for it_inhibitor_kds, inhibitor_kd in enumerate(inhibitor_kds):
-    for it_ligand_kd_range, ligand_kd in enumerate(ligand_kd_range):
+for it_ligand_kd, ligand_kd in enumerate(ligand_kds):
+    for it_inhibitor_kds, inhibitor_kd in enumerate(inhibitor_kd_range):
         lig_conc = 10e-9
         i_conc = 10e-6
-        p = protein_concs[it_ligand_kd_range]
-        y[it_inhibitor_kds][it_ligand_kd_range] = competition_pl(
+        p = protein_concs[it_ligand_kd]
+        y[it_ligand_kd][it_inhibitor_kds] = competition_pl(
             **{'p': p, 'l': lig_conc, 'i': i_conc, 'kdpl': ligand_kd, 'kdpi': inhibitor_kd})/lig_conc
-
 
 fig, ax = plt.subplots(figsize=(8, 6))
 ax.set_xticklabels(
@@ -39,12 +38,15 @@ ax.set_xticklabels(
 ax.set_xticks(range(XAXIS_BEGINNING, XAXIS_END+1))
 
 plot_line_labels = [
-    r'K$_\mathrm{D}$PI=1 nM',
-    r'K$_\mathrm{D}$PI=10 nM',
-    r'K$_\mathrm{D}$PI=100 nM',
-    r'K$_\mathrm{D}$PI=1 µM',
-    r'K$_\mathrm{D}$PI=10 µM',
-    r'K$_\mathrm{D}$PI=100 µM',
+    r'K$_\mathrm{D}$PL=1 pM',
+    r'K$_\mathrm{D}$PL=10 pM',
+    r'K$_\mathrm{D}$PL=100 pM',
+    r'K$_\mathrm{D}$PL=1 nM',
+    r'K$_\mathrm{D}$PL=10 nM',
+    r'K$_\mathrm{D}$PL=100 nM',
+    r'K$_\mathrm{D}$PL=1 µM',
+    r'K$_\mathrm{D}$PL=10 µM',
+    r'K$_\mathrm{D}$PL=100 µM',
 ]
 
 plot_marker_styles = list(reversed([
@@ -54,9 +56,13 @@ plot_marker_styles = list(reversed([
     'd',
     "s",
     "8",
+    "X",
+    "o",
+    "p"
+
 ]))
 
-for i in reversed(range(inhibitor_kds.shape[0])):
+for i in reversed(range(ligand_kds.shape[0])):
     ax.plot(x_axis, y[i], 'k', label=plot_line_labels[i],
             marker=plot_marker_styles[i], markevery=NUM_POINTS_ON_XAXIS//20, linewidth=1)
 ax.set_xlabel(r"Ligand pK$_\mathrm{D}$")

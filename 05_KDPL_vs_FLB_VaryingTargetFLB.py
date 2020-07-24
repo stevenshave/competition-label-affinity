@@ -11,9 +11,6 @@ from matplotlib import pyplot as plt
 import numpy as np
 from high_accuracy_binding_equations import *
 
-# We can choose to work in a common unit, typically nM, or uM, as long as all
-# numbers are in the same unit, the result is valid.  We assume uM for all
-# concentrations bellow.
 
 # Parameters dictating range of simulation
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
