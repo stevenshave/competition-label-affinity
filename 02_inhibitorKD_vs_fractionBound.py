@@ -14,7 +14,7 @@ from high_accuracy_binding_equations import *
 # Parameters dictating range of simulation
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
-NUM_POINTS_ON_XAXIS = 50 # Publication used 2000 pts along X
+NUM_POINTS_ON_XAXIS = 2000 # Publication used 2000 pts along X
 TARGET_FRACTION_L_BOUND = 0.7
 
 x_axis = np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_POINTS_ON_XAXIS)
@@ -56,20 +56,19 @@ plot_marker_styles = list(reversed([
     'd',
     "s",
     "8",
-    "X",
-    "o",
-    "p"
-
+    "*",
+    6,
+    7
 ]))
 
 for i in reversed(range(ligand_kds.shape[0])):
     ax.plot(x_axis, y[i], 'k', label=plot_line_labels[i],
-            marker=plot_marker_styles[i], markevery=NUM_POINTS_ON_XAXIS//20, linewidth=1)
-ax.set_xlabel(r"Ligand pK$_\mathrm{D}$")
+            marker=plot_marker_styles[i], markevery=NUM_POINTS_ON_XAXIS//20, linewidth=1, markersize=7)
+ax.set_xlabel(r"Inhibitor pK$_\mathrm{D}$")
 ax.set_ylabel("Fraction ligand bound")
 ax.legend()
 ax.grid()
-ax.title.set_text(r"Protein-ligand signal over a range of ligand K$_\mathrm{D}$s, [L]=10 nM, [I]=10 " +
+ax.title.set_text(r"Protein-ligand signal over a range of inhibitor K$_\mathrm{D}$s, [L$_0$]=10 nM, [I$_0$]=10 " +
                   r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
 ax.set_xlim(3, 12)
 ax.set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)

@@ -20,8 +20,20 @@ from high_accuracy_binding_equations import *
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
 TARGET_FRACTION_L_BOUND = 0.7
-NUM_INHIBITOR_KDS = 35
-NUM_LIGAND_KDS = 200
+NUM_INHIBITOR_KDS = 1000
+NUM_LIGAND_KDS = 1000
+USE_VIDEO_SIZING=True
+
+
+figure_size=(7.204724, 5.09424929292)
+plot_title_size=16
+axis_label_size=14
+tick_label_font_size=12
+if USE_VIDEO_SIZING:
+    figure_size=(19.2,10.8)
+    plot_title_size=28
+    axis_label_size=20
+    tick_label_font_size=20
 
 x_axis=np.linspace(XAXIS_BEGINNING, XAXIS_END,NUM_INHIBITOR_KDS)
 inhibitor_kds = 10**(-np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_INHIBITOR_KDS))  
@@ -56,9 +68,18 @@ x_axis=np.linspace(XAXIS_BEGINNING, XAXIS_END, num=inhibitor_kds.shape[0])
 y=loaded_data['y']
 
 
-fig, ax = plt.subplots(2,1, figsize=(7.204724, 5.09424929292), gridspec_kw={'height_ratios':[10,1]}, sharex=True)
-
+#fig.set_size_inches(*figure_size, forward = False)
+fig, ax = plt.subplots(2,1, figsize=figure_size, gridspec_kw={'height_ratios':[10,1]}, sharex=True)
 line,=ax[0].plot(x_axis, y[0], 'k',  linewidth=1)
+
+
+for tick in ax[1].xaxis.get_major_ticks():
+    tick.label.set_fontsize(tick_label_font_size) 
+for tick in ax[1].yaxis.get_major_ticks():
+    tick.label.set_fontsize(tick_label_font_size) 
+for tick in ax[0].yaxis.get_major_ticks():
+    tick.label.set_fontsize(tick_label_font_size) 
+
 
 def update(num, x, y, line):
     line.set_data(x_axis, y[int(num)])
@@ -68,20 +89,20 @@ def update(num, x, y, line):
     fig.canvas.draw_idle()
     return line
 
-ani = animation.FuncAnimation(fig, update, len(ligand_kds), fargs=[x_axis, y, line],interval=20, blit=False, repeat_delay=2000,)
+ani = animation.FuncAnimation(fig, update, range(len(ligand_kds))[::4], fargs=[x_axis, y, line],interval=5, blit=False, repeat_delay=2000,)
 
 ax[0].set_xticklabels(
     ["3 (mM)", "4", "5", r"6 ($\mathrm{\mu}$M)", "7", "8", "9 (nM)", "10", "11", "12 (pM)"])
 ax[0].set_xticks(range(XAXIS_BEGINNING, XAXIS_END+1))
 
-ax[0].set_xlabel(r"Inhibitor pK$_\mathrm{D}$")
-ax[0].set_ylabel("Fraction ligand bound")
+ax[0].set_xlabel(r"Inhibitor pK$_\mathrm{D}$", fontsize=axis_label_size)
+ax[0].set_ylabel("Fraction ligand bound", fontsize=axis_label_size)
 ax[0].grid()
-ax[0].title.set_text(r"Protein-ligand signal over a range of inhibitor K$_\mathrm{D}$s, [L]=10 nM, [I]=10 " +
-                  r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
+fig.suptitle(r"Protein-ligand signal over a range of inhibitor K$_\mathrm{D}$s, [L]=10 nM, [I]=10 " +
+                  r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}",fontsize=plot_title_size)
 ax[0].set_xlim(3, 12)
 ax[0].set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)
-fig.tight_layout(rect=[0.04,0,1,1])
+fig.tight_layout(rect=[0.04,0,1,0.9])
 
-ani.save('basic_animation.mp4', writer = "ffmpeg", extra_args=['-vcodec', 'libx264'])
+ani.save('animation_inhib_vs_fb_fast.mp4', writer = "ffmpeg", extra_args=['-vcodec', 'libx264'],fps=30)
 plt.show()

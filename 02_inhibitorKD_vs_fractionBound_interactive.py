@@ -21,8 +21,8 @@ from high_accuracy_binding_equations import *
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
 TARGET_FRACTION_L_BOUND = 0.7
-NUM_INHIBITOR_KDS = 35
-NUM_LIGAND_KDS = 200
+NUM_INHIBITOR_KDS = 1000
+NUM_LIGAND_KDS = 1000
 
 x_axis=np.linspace(XAXIS_BEGINNING, XAXIS_END,NUM_INHIBITOR_KDS)
 inhibitor_kds = 10**(-np.linspace(XAXIS_BEGINNING, XAXIS_END, NUM_INHIBITOR_KDS))  

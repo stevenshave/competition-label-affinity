@@ -14,12 +14,12 @@ from high_accuracy_binding_equations import *
 # concentrations bellow.
 
 # Parameters dictating range of simulation
-DATAFILENAME="09-data-big"
+DATAFILENAME="09-data"
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
 NUM_POINTS_ON_XAXIS = 1000 # Publication used 2000 pts along X
-LIGAND_CONCS = [0.0001,0.001, 0.010, 0.100, 1.0]
-TARGET_FLBS = [0.9,0.7,0.5,0.3,0.1]
+LIGAND_CONCS = [0.001, 0.010, 0.100]
+TARGET_FLBS = [0.9,0.7,0.3]
 INHIBITOR_CONC = 10
 inhibitor_kds = np.array([0.001, 0.01, 0.1000001, 1, 10, 100])
 
