@@ -51,7 +51,7 @@ plot_marker_styles = [
     'D',
 
 ]
-fig, ax = plt.subplots(figsize=(8, 6))
+fig, ax = plt.subplots(figsize=(7.204724, 5.09424929292))
 ax.set_xticklabels(
     ["1 nM", "10 nM", "100 nM", "1 µM", "10 µM", "100 µM"])
 ax.set_xticks(range(XAXIS_BEGINNING, XAXIS_END+1))

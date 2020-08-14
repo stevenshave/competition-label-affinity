@@ -31,7 +31,6 @@ ligand_kds =  10**(-np.linspace(XAXIS_BEGINNING,XAXIS_END, num=NUM_LIGAND_KDS))
 protein_concs = np.array(calc_amount_p(
     TARGET_FRACTION_L_BOUND, 10e-9, ligand_kds))
 DATAFILENAME="02-data.npz"
-
 y = np.full((ligand_kds.shape[0], inhibitor_kds.shape[0]), np.nan)
 if not Path(DATAFILENAME).exists():
     print("Regenerating data file")
