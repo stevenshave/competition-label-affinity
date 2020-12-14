@@ -1,4 +1,7 @@
-# competition-label-affinity
+
+# competition-label-affinity 
+[![DOI](https://zenodo.org/badge/264960530.svg)](https://zenodo.org/badge/latestdoi/264960530)
+
 An investigation into the impact of labelled ligand affinity in competition experiments.  Code accompanies the paper "Optimum ligand affinity for competition-based primary screens" by Shave et. al.
 
 
