@@ -1,9 +1,8 @@
 # competition-label-affinity
-An investigation into the impact of labelled ligand affinity in competition experiments.  Code accompanies the paper "Revisiting labelled ligand affinity
-in competition experiments" by Shave et. al.
+An investigation into the impact of labelled ligand affinity in competition experiments.  Code accompanies the paper "Optimum ligand affinity for competition-based primary screens" by Shave et. al.
 
 
-![PyBindingCurve simulation](Figure01-0.7.svg "Breaking a dimer")
+![LigandpKD vs FLB](Figure01-0.7.svg "LigandpKD vs FLB")
 
 
 # Requirements

@@ -3,6 +3,7 @@ tmp.py
 /.vscode
 *.npz
 *.mp4
+bak/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
