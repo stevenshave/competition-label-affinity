@@ -97,7 +97,7 @@ ax[0].set_xticks(range(XAXIS_BEGINNING, XAXIS_END+1))
 ax[0].set_xlabel(r"Ligand pK$_\mathrm{D}$", fontsize = axis_label_size)
 ax[0].set_ylabel("Fraction ligand bound", fontsize = axis_label_size)
 ax[0].grid()
-fig.suptitle(r"Protein-ligand signal over a range of ligand K$_\mathrm{D}$s, [L]=10 nM, [I]=10 " +
+fig.suptitle(r"Protein-ligand signal over a range of ligand K$_\mathrm{D}$s, [L$_0$]=10 nM, [I$_0$]=10 " +
                   r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}", fontsize=plot_title_size)
 ax[0].set_xlim(3, 12)
 ax[0].set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)
