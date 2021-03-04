@@ -66,5 +66,6 @@ ax.grid()
 ax.title.set_text(r"Protein-ligand signal over a range of ligand K$_\mathrm{D}$s, [L$_0$]=10 nM, [I$_0$]=10 " +
                   r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
 ax.set_xlim(3, 12)
+ax.vlines(6.975,0,1,linestyles="--")
 ax.set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)
 plt.show()
