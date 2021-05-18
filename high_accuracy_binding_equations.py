@@ -6,7 +6,7 @@ in competition experiments" by Shave et.al.
 """
 
 
-from mpmath import mpf, sqrt, power, mp, fabs
+from mpmath import mpf, sqrt, power, mp, fabs, almosteq
 mp.dps = 500  # Set mpmath to use high accuracy
 
 
@@ -20,7 +20,6 @@ def calc_kdpi_for_fractionl_bound(p, l, i, kdpl, targetflb):
     l=mpf(l)
     i=mpf(i)
     kdpl=mpf(kdpl)
-    kdpi=mpf(kdpi)
     targetflb=mpf(targetflb)
     return float((kdpl*targetflb*(i - p - i*targetflb + kdpl*targetflb + l*targetflb + p*targetflb - l*power(targetflb, 2)))/((-1 + targetflb)*(-p + kdpl*targetflb + l*targetflb + p*targetflb - l*power(targetflb, 2))).real)
 
@@ -48,10 +47,10 @@ def competition_pl(p, l, i, kdpl, kdpi):
     i = mpf(i)
     kdpl = mpf(kdpl)
     kdpi = mpf(kdpi)
-    if fabs(kdpl - kdpi) < 1e-12:
-        kdpi += 1e-12
+    if almosteq(kdpl, kdpi, 1e-10):
+        kdpi += 1e-10
     if kdpl < kdpi:
-        return float((
+        return (
             -(
                 p * kdpi
                 - p * kdpl
@@ -164,8 +163,7 @@ def competition_pl(p, l, i, kdpl, kdpi):
                             - 6 * power(p, 3) * kdpi * power(kdpl, 2)
                             + 12 * power(p, 2) * i * kdpi * power(kdpl, 2)
                             - 6 * p * power(i, 2) * kdpi * power(kdpl, 2)
-                            + 18 * power(p, 2) * power(kdpi, 2) *
-                            power(kdpl, 2)
+                            + 18 * power(p, 2) * power(kdpi, 2) * power(kdpl, 2)
                             - 12 * p * i * power(kdpi, 2) * power(kdpl, 2)
                             - 6 * p * power(kdpi, 3) * power(kdpl, 2)
                             + 2 * power(p, 3) * power(kdpl, 3)
@@ -414,9 +412,9 @@ def competition_pl(p, l, i, kdpl, kdpi):
                 0.3333333333333333,
             )
             / (3.0 * power(2, 0.3333333333333333) * (-kdpi + kdpl))
-        ).real)
+        ).real
     else:
-        return float((
+        return (
             -(
                 p * kdpi
                 - p * kdpl
@@ -530,8 +528,7 @@ def competition_pl(p, l, i, kdpl, kdpi):
                             - 6 * power(p, 3) * kdpi * power(kdpl, 2)
                             + 12 * power(p, 2) * i * kdpi * power(kdpl, 2)
                             - 6 * p * power(i, 2) * kdpi * power(kdpl, 2)
-                            + 18 * power(p, 2) * power(kdpi, 2) *
-                            power(kdpl, 2)
+                            + 18 * power(p, 2) * power(kdpi, 2) * power(kdpl, 2)
                             - 12 * p * i * power(kdpi, 2) * power(kdpl, 2)
                             - 6 * p * power(kdpi, 3) * power(kdpl, 2)
                             + 2 * power(p, 3) * power(kdpl, 3)
@@ -695,8 +692,7 @@ def competition_pl(p, l, i, kdpl, kdpi):
                             - 6 * power(p, 3) * kdpi * power(kdpl, 2)
                             + 12 * power(p, 2) * i * kdpi * power(kdpl, 2)
                             - 6 * p * power(i, 2) * kdpi * power(kdpl, 2)
-                            + 18 * power(p, 2) * power(kdpi, 2) *
-                            power(kdpl, 2)
+                            + 18 * power(p, 2) * power(kdpi, 2) * power(kdpl, 2)
                             - 12 * p * i * power(kdpi, 2) * power(kdpl, 2)
                             - 6 * p * power(kdpi, 3) * power(kdpl, 2)
                             + 2 * power(p, 3) * power(kdpl, 3)
@@ -784,4 +780,4 @@ def competition_pl(p, l, i, kdpl, kdpi):
                 )
             )
             / (6.0 * power(2, 0.3333333333333333) * (-kdpi + kdpl))
-        ).real)
+        ).real
