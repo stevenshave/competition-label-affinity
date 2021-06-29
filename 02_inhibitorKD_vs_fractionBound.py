@@ -69,7 +69,7 @@ ax.set_xlabel(r"Inhibitor pK$_\mathrm{D}$")
 ax.set_ylabel("Fraction ligand bound")
 ax.legend()
 ax.grid()
-ax.title.set_text(r"Protein-ligand signal over a range of inhibitor K$_\mathrm{D}$s, [L$_0$]=10 nM, [I$_0$]=10 " +
+ax.title.set_text(r"Fraction ligand bound over a range of inhibitor K$_\mathrm{D}$s, [L$_0$]=10 nM, [I$_0$]=10 " +
                   r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
 ax.set_xlim(3, 12)
 ax.set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)

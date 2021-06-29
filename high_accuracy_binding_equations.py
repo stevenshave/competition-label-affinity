@@ -47,8 +47,8 @@ def competition_pl(p, l, i, kdpl, kdpi):
     i = mpf(i)
     kdpl = mpf(kdpl)
     kdpi = mpf(kdpi)
-    if almosteq(kdpl, kdpi, 1e-10):
-        kdpi += 1e-10
+    if almosteq(kdpl, kdpi, 1e-12):
+        kdpi += 1e-12
     if kdpl < kdpi:
         return (
             -(
