@@ -1,5 +1,5 @@
 testbed.py
-tmp.py
+tmp*.py
 /.vscode
 *.npz
 *.mp4

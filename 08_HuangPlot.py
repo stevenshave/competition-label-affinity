@@ -1,9 +1,9 @@
 """
 Produce plot similar to Huang
 
-Generates a plot used in the supporting information of the manuscript
-"Revisiting labelled ligand affinity in competition experiments" by Shave
-et.al.
+Generates a plot shown by Huang in which label affinity impacts resolvable
+ligand affinity. This plot was removed from our publication due to rights
+concerns.
 """
 
 import sys

@@ -25,7 +25,7 @@ protein_concs = np.array(calc_amount_p(
 y = np.full((ligand_kds.shape[0], x_axis.shape[0]), np.nan)
 
 for it_ligand_kd, ligand_kd in enumerate(ligand_kds):
-    print(f"Generating: {it_ligand_kd}/{len(ligand_kds)}")
+    print(f"Generating: {it_ligand_kd+1}/{len(ligand_kds)}")
     for it_inhibitor_kds, inhibitor_kd in enumerate(inhibitor_kd_range):
         lig_conc = 10e-9
         i_conc = 10e-6
