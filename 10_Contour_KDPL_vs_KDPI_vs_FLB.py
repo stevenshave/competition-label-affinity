@@ -62,7 +62,7 @@ print(y.shape)
 fig, ax = plt.subplots(figsize=(7.204724, 5.09424929292))
 
 X, Z = np.meshgrid(x_axis, y_axis)
-ct=ax.contour(X, Z, y, [0.1,0.5,0.675], inline=True, fontsize=10)
+ct=ax.contour(X, Z, y, [0.1,0.5,0.69], inline=True, fontsize=10, colors='k')
 
 ax.clabel(ct, inline=True, fontsize=10)
 
@@ -78,8 +78,8 @@ ax.set_xlabel(r"Ligand pK$_\mathrm{D}$")
 ax.set_ylabel("Inhibitor pK$_\mathrm{D}$")
 #ax.set_zlabel("Fraction ligand bound")
 ax.grid()
-ax.title.set_text(r"Protein-ligand signal over a range of inhibitor K$_\mathrm{D}$s, [L$_0$]=10 nM, [I$_0$]=10 " +
-                  r"$\mathrm{\mu}$M"+f"\nTarget fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
+ax.title.set_text(r"Contour plot showing fraction ligand bound over varying ligand and inhibitor K$_\mathrm{D}$s,"+"\n"+r"[L$_0$]=10 nM, [I$_0$]=10 " +
+                  r"$\mathrm{\mu}$M"+f". Target fraction ligand bound without inhibitor = {TARGET_FRACTION_L_BOUND}")
 #ax.set_xlim(3, 12)
 #ax.set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)
 fig.legend()
