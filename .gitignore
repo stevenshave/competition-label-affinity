@@ -4,6 +4,9 @@ tmp*.py
 *.npz
 *.mp4
 bak/
+lookup_table*.csv
+10-*.csv
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

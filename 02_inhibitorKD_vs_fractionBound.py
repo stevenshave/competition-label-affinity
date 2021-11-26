@@ -54,7 +54,7 @@ plot_marker_styles = list(reversed([
     '',
     '+',
     'x',
-    'd',
+    "P",
     "s",
     "8",
     "*",
@@ -63,8 +63,14 @@ plot_marker_styles = list(reversed([
 ]))
 
 for i in reversed(range(ligand_kds.shape[0])):
+    line_marker=plot_marker_styles[i]
+    mark_every_n_points=NUM_POINTS_ON_XAXIS//10
+    if line_marker=='x':
+        mark_every_n_points=range((NUM_POINTS_ON_XAXIS//10)//2,NUM_POINTS_ON_XAXIS,NUM_POINTS_ON_XAXIS//10)
+    if line_marker=='P':
+        mark_every_n_points=range((NUM_POINTS_ON_XAXIS//10)//4,NUM_POINTS_ON_XAXIS,NUM_POINTS_ON_XAXIS//10)
     ax.plot(x_axis, y[i], 'k', label=plot_line_labels[i],
-            marker=plot_marker_styles[i], markevery=NUM_POINTS_ON_XAXIS//20, linewidth=1, markersize=7)
+            marker=line_marker, markevery=mark_every_n_points, linewidth=1, markersize=7)
 ax.set_xlabel(r"Inhibitor pK$_\mathrm{D}$")
 ax.set_ylabel("Fraction ligand bound")
 ax.legend()
