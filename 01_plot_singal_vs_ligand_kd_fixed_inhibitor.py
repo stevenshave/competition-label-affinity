@@ -2,8 +2,8 @@
 Produce plot of competition experiment sensitivity with fixed lignand
 
 Generates a supporting plot of signal (PL) in a competition experiment vs
-ligand KD for a fixed concentration and KD of inhibitor "Revisiting labelled
-ligand affinity in competition experiments" by Shave et.al.
+ligand KD for a fixed concentration and KD of inhibitor "Identification
+of optimum ligand affinity for competition-based primary screens" by Shave et.al.
 """
 
 import sys

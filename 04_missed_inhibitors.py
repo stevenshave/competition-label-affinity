@@ -3,8 +3,8 @@ Calculate readout for high and low ligand affinity competition systems
 
 Output the concentration and fraction ligand bound for two competition systems,
 one using a high affinity (1 nM) ligand and the other low (100 nM).
-Used in the preparation of the manuscript "Revisiting labelled ligand affinity
-in competition experiments" by Shave et.al.
+Used in the preparation of the manuscript "Identification of optimum ligand
+affinity for competition-based primary screens" by Shave et.al.
 """
 
 import sys

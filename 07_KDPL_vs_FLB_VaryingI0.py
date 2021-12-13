@@ -2,8 +2,8 @@
 Plot competition experiment sensitivity, varying the amount of ligand.
 
 Generates a plot used in the Supporting Information section of the manuscript
-"Revisiting labelled ligand affinity in competition experiments" by Shave
-et.al.
+"Identification of optimum ligand affinity for competition-based primary screens"
+by Shave et.al.
 """
 
 import sys

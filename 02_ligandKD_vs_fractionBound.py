@@ -1,8 +1,8 @@
 """
 Produce plot of competition experiment sensitivity, ligand KD x-axis
 
-Generates a plot used in the manuscript "Revisiting labelled ligand affinity
-in competition experiments" by Shave et.al.
+Generates a plot used in the manuscript "Identification of optimum ligand affinity
+for competition-based primary screens" by Shave et.al.
 """
 
 import sys

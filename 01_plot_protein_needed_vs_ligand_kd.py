@@ -3,8 +3,8 @@ Produce plot of amount of protein needed over a range of ligand KDs
 
 Generates a plot of protein needed to reach a desired fraction bound
 in a competition experiment, dependant on ligand KD.  For the manuscript
-"Revisiting labelled ligand affinity in competition experiments" by Shave 
-et.al.
+"Identification of optimum ligand affinity for competition-based primary screens"
+by Shave et.al.
 """
 
 import sys

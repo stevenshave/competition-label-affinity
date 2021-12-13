@@ -1,8 +1,8 @@
 """
 Functions to calculate readout of competition experiments
 
-Used in the preparation of the manuscript "Revisiting labelled ligand affinity
-in competition experiments" by Shave et.al.
+Used in the preparation of the manuscript "Identification of optimum ligand affinity
+for competition-based primary screens" by Shave et.al.
 """
 
 
