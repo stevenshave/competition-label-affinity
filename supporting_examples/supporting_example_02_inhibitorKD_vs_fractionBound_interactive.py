@@ -9,11 +9,11 @@ import sys
 from matplotlib import pyplot as plt
 from matplotlib.widgets import Slider
 from pathlib import Path
-plt.rcParams['animation.ffmpeg_path'] = Path("C:\\Users\\steve\\Downloads\\ffmpeg-20200716-d11cc74-win64-static\\bin\\ffmpeg.exe")
+plt.rcParams['animation.ffmpeg_path'] = Path("C:\\Program Files\\ffmpeg\\bin\\ffmpeg.exe")
 from matplotlib import animation
 import sys
 import numpy as np
-from high_accuracy_binding_equations import *
+from claffinity.high_accuracy_binding_equations import *
 
 
 

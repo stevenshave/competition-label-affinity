@@ -1,10 +1,13 @@
+
+
+
 import numpy as np
 import random
 import numpy as np
 import pandas as pd
 import sys
 
-from high_accuracy_binding_equations import *
+from claffinity.high_accuracy_binding_equations import *
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
 XAXIS_END = 12  # pKD of 12 is pM
 NUM_LIGAND_KDS = 200

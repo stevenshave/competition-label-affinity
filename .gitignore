@@ -6,6 +6,7 @@ tmp*.py
 bak/
 lookup_table*.csv
 10-*.csv
+*.ipynb
 
 
 # Byte-compiled / optimized / DLL files

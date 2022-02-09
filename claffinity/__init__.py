@@ -1,0 +1,1 @@
+from .competition_label_affinity import CompetitionLabelAffinity

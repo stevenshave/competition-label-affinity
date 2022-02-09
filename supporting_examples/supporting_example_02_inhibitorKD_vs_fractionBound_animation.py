@@ -8,13 +8,11 @@ for competition-based primary screens" by Shave et.al.
 import sys
 from matplotlib import pyplot as plt
 from pathlib import Path
-plt.rcParams['animation.ffmpeg_path'] = Path("C:\\Users\\steve\\Downloads\\ffmpeg-20200716-d11cc74-win64-static\\bin\\ffmpeg.exe")
+plt.rcParams['animation.ffmpeg_path'] = Path("C:\\Program Files\\ffmpeg\\bin\\ffmpeg.exe")
 from matplotlib import animation
 import sys
 import numpy as np
-from high_accuracy_binding_equations import *
-
-
+from claffinity.high_accuracy_binding_equations import *
 
 # Parameters dictating range of simulation
 XAXIS_BEGINNING = 3  # pKD of 3 is mM
@@ -104,5 +102,5 @@ ax[0].set_xlim(3, 12)
 ax[0].set_ylim(0, TARGET_FRACTION_L_BOUND*1.1)
 fig.tight_layout(rect=[0.04,0,1,0.9])
 
-ani.save('animation_inhib_vs_fb_fast.mp4', writer = "ffmpeg", extra_args=['-vcodec', 'libx264'],fps=30)
+ani.save('tmp_animation_inhib_vs_fb_fast.mp4', writer = "ffmpeg",fps=30)
 plt.show()

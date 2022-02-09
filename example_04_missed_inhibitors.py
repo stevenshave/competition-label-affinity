@@ -7,10 +7,9 @@ Used in the preparation of the manuscript "Identification of optimum ligand
 affinity for competition-based primary screens" by Shave et.al.
 """
 
-import sys
-from high_accuracy_binding_equations import *
-from matplotlib import pyplot as plt
-import numpy as np
+from claffinity import CompetitionLabelAffinity
+cla=CompetitionLabelAffinity()
+
 
 
 # We can choose to work in a common unit, typically nM, or uM, as long as all
@@ -25,13 +24,13 @@ INHIBITOR_KD=1.0
 INHIBITOR_CONC = 10
 
 low_affinity_ligand_system = {'kdpl': LOW_AFFINITY_LIGAND_KD, 'l': LIGAND_CONC, 'i': INHIBITOR_CONC, 'kdpi': INHIBITOR_KD}
-low_affinity_ligand_system['p'] = calc_amount_p(TARGET_FRACTION_BOUND, LIGAND_CONC, low_affinity_ligand_system['kdpl'])
+low_affinity_ligand_system['p'] = cla.calc_amount_p(TARGET_FRACTION_BOUND, LIGAND_CONC, low_affinity_ligand_system['kdpl'])
 high_affinity_ligand_system = {'kdpl': HIGH_AFFINITY_LIGAND_KD,  'l': LIGAND_CONC, 'i': INHIBITOR_CONC, 'kdpi': INHIBITOR_KD}
-high_affinity_ligand_system['p'] = calc_amount_p(
+high_affinity_ligand_system['p'] = cla.calc_amount_p(
     TARGET_FRACTION_BOUND, LIGAND_CONC, high_affinity_ligand_system['kdpl'])
 
-pl_low_affinity_ligand_system = competition_pl(**low_affinity_ligand_system)
-pl_high_affinity_ligand_system = competition_pl(**high_affinity_ligand_system)
+pl_low_affinity_ligand_system = cla.single_point_competition_readout(**low_affinity_ligand_system)
+pl_high_affinity_ligand_system = cla.single_point_competition_readout(**high_affinity_ligand_system)
 
 print(f"Low affinity ligand system: {low_affinity_ligand_system}, [PL]={pl_low_affinity_ligand_system:.4f}")
 print(f"\tFracton ligand bound = {pl_low_affinity_ligand_system/low_affinity_ligand_system['l']}")

@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 from matplotlib import pyplot as plt
 import numpy as np
-from high_accuracy_binding_equations import *
+from claffinity.high_accuracy_binding_equations import *
 
 # We can choose to work in a common unit, typically nM, or uM, as long as all
 # numbers are in the same unit, the result is valid.  We assume uM for all
