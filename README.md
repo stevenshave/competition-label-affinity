@@ -6,6 +6,8 @@ A tool for investigating the impact of labelled ligand affinity in competition e
 
 Can be installed from pypi via
 
+![LigandpKD vs FLB](https://github.com/stevenshave/competition-label-affinity/blob/7c3a184d4cc8127fcf22e1f125721a1b66ba174f/Figure01-0.7.png "LigandpKD vs FLB")
+
 ``` pip install claffinity ```
 
 # Example programs:
