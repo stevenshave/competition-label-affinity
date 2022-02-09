@@ -5,10 +5,10 @@
 A tool for investigating the impact of labelled ligand affinity in competition experiments.  Code accompanies the paper "Optimum ligand affinity for competition-based primary screens" by Shave et. al.
 
 Can be installed from pypi via
+``` pip install claffinity ```
 
 ![LigandpKD vs FLB](https://github.com/stevenshave/competition-label-affinity/blob/7c3a184d4cc8127fcf22e1f125721a1b66ba174f/Figure01-0.7.png "LigandpKD vs FLB")
 
-``` pip install claffinity ```
 
 # Example programs:
 A selection of programs are available in this archive prefixed with 'example_'
